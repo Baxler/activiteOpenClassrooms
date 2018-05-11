@@ -5,3 +5,20 @@ while counter < 11
   puts counter
   counter = counter + 1
 end
+
+#Ce bout de code remplace un mot à cacher par REDACTED
+
+puts "Entrez du texte"
+text = gets.chomp
+
+puts "Entrez le mot à cacher"
+redact = gets.chomp
+
+words = text.split(" ")
+words.each { |x|
+  if x == redact
+    print "REDACTED "
+  else
+    print "#{x} "
+  end
+  }

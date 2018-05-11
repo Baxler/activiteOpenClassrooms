@@ -11,3 +11,17 @@ else
 end
 
 puts user_input
+
+# Ce programme compte le nombre de fois que chaque mot apparaît dans une phrase.
+
+puts "Entrez du texte"
+text = gets.chomp
+words = text.split(" ")
+frequencies = Hash.new(0)
+words.each { |x| 
+  frequencies[x] += 1}
+frequencies = frequencies.sort_by {|words, count| count}
+frequencies.reverse!
+frequencies.each do |x,y|
+  puts "#{x} #{y}"
+end
