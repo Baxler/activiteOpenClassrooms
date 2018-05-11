@@ -22,3 +22,5 @@ words.each { |x|
     print "#{x} "
   end
   }
+
+puts "Fin du programme"

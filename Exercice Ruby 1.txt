@@ -25,3 +25,5 @@ frequencies.reverse!
 frequencies.each do |x,y|
   puts "#{x} #{y}"
 end
+
+puts "Fin du programme"
