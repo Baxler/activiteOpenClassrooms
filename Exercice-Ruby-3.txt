@@ -1,0 +1,108 @@
+﻿# Ce programme gère une "base de données" contenant des films et leur note
+# La base de donnée ici est le Hash movies, contenant un seul film
+movies = {
+  the_godfather: 9,
+  scarface: 8,
+  }
+
+puts "Que voulez-vous faire ? Ecrire :"
+puts "add : si vous voulez ajouter un film"
+puts "update : si vous voulez modifier un film"
+puts "display : tout afficher"
+puts "delete : supprimer"
+choice = gets.chomp
+
+case choice
+  when "add"
+    puts "Quel est le titre du nouveau film ?"
+    title = gets.chomp.to_sym
+    if movies[title].nil?
+# nil? = test de présence, si absent = true
+      puts "Quelle note lui donnez-vous ?"
+      rating = gets.chomp.to_i
+      movies[title] = rating.
+      puts "Film #{title} ajoute avec une note de      #{movies[title]} !"
+    else
+      puts "Le film #{title} existe deja avec une note de #{movies[title]} !"
+    end
+  when "update"
+    puts "Entrez le titre de votre film"
+    title = gets.chomp.to_sym.downcase
+# La frappe est sensible  la casse, d'ou le downcase
+    if movies[title].nil?
+      puts "Le film n'est pas en memoire"
+    else
+      puts "Entrez votre nouvelle note au film #{title}"
+      rating = gets.chomp.to_i
+      movies[title] = rating
+      puts "La nouvelle note de #{title} est #{movies[title]}"
+    end
+  when "display"
+    movies.each { |m,r|
+      puts "#{m}: #{r}"}
+  when "delete"
+    puts "Entrez le film a supprimer"
+    title = gets.chomp.to_sym.downcase
+    if movies[title].nil?
+      puts "Le film n'est pas enregistre"
+    else
+      movies.delete(title)
+      puts "Le film #{title} est supprime"
+    end
+  else
+    puts "Error!"
+end
+
+#Exemple donné en début d'exercice
+movies = {
+  Memento: 3,
+  Primer: 4,
+  Ishtar: 1
+}
+
+puts "What would you like to do?"
+puts "-- Type 'add' to add a movie."
+puts "-- Type 'update' to update a movie."
+puts "-- Type 'display' to display all movies."
+puts "-- Type 'delete' to delete a movie."
+
+choice = gets.chomp.downcase
+case choice
+when 'add'
+  puts "What movie do you want to add?"
+  title = gets.chomp
+  if movies[title.to_sym].nil?
+    puts "What's the rating? (Type a number 0 to 4.)"
+    rating = gets.chomp
+    movies[title.to_sym] = rating.to_i
+    puts "#{title} has been added with a rating of #{rating}."
+  else
+    puts "That movie already exists! Its rating is #{movies[title.to_sym]}."
+  end
+when 'update'
+  puts "What movie do you want to update?"
+  title = gets.chomp
+  if movies[title.to_sym].nil?
+    puts "Movie not found!"
+  else
+    puts "What's the new rating? (Type a number 0 to 4.)"
+    rating = gets.chomp
+    movies[title.to_sym] = rating.to_i
+    puts "#{title} has been updated with new rating of #{rating}."
+  end
+when 'display'
+  movies.each do |movie, rating|
+    puts "#{movie}: #{rating}"
+  end
+when 'delete'
+  puts "What movie do you want to delete?"
+  title = gets.chomp
+  if movies[title.to_sym].nil?
+    puts "Movie not found!"
+  else
+    movies.delete(title.to_sym)
+    puts "#{title} has been removed."
+  end
+else
+  puts "Sorry, I didn't understand you."
+end
