@@ -23,4 +23,4 @@ words.each { |x|
   end
   }
 
-puts "Fin du programme"
+puts "Test OK"
